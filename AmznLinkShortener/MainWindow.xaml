@@ -32,15 +32,38 @@
             </Button>
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="13*"/>
-            <ColumnDefinition Width="67*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox x:Name="txUrl" HorizontalAlignment="Left" Margin="10,10,0,0" Text="Paste Amzn product link here" TextWrapping="NoWrap" VerticalAlignment="Top" Width="380" Grid.ColumnSpan="2" GotKeyboardFocus="txUrl_GotKeyboardFocus" LostMouseCapture="txUrl_LostMouseCapture" LostKeyboardFocus="txUrl_LostKeyboardFocus"/>
-        <Button x:Name="btnShorten" Content="Shorten and copy to clipboard [RETURN]" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="380" Click="Button_Click" Grid.ColumnSpan="2" IsDefault="True"/>
-        <CheckBox x:Name="cbMonitorClipboard" Content="Monitor clipboard (auto-shorten Amzn links)" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Checked="cbMonitorClipboard_Checked" Grid.ColumnSpan="2"/>
-    </Grid>
 
+    <Grid>
+        <TextBox 
+            x:Name="txUrl" 
+            HorizontalAlignment="Left" 
+            Margin="10,10,0,0" 
+            Text="Paste Amzn product link here" 
+            TextWrapping="NoWrap" 
+            VerticalAlignment="Top" 
+            Width="380" 
+            GotKeyboardFocus="txUrl_GotKeyboardFocus" 
+            LostMouseCapture="txUrl_LostMouseCapture" 
+            LostKeyboardFocus="txUrl_LostKeyboardFocus">
+        </TextBox>
+        <Button 
+            x:Name="btnShorten" 
+            Content="Shorten and copy to clipboard [RETURN]" 
+            HorizontalAlignment="Left" 
+            Margin="10,41,0,0" 
+            VerticalAlignment="Top" 
+            Width="380" 
+            Click="Button_Click" 
+            Grid.ColumnSpan="2" 
+            IsDefault="True">
+        </Button>
+        <CheckBox 
+            x:Name="cbMonitorClipboard" 
+            Content="Monitor clipboard (auto-shorten Amzn links)" 
+            HorizontalAlignment="Left" 
+            Margin="10,73,0,0" 
+            VerticalAlignment="Top" 
+            Checked="cbMonitorClipboard_Checked" >
+        </CheckBox>
+    </Grid>
 </mah:MetroWindow>
