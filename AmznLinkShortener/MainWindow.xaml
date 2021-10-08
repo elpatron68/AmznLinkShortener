@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmznLinkShortener"
         mc:Ignorable="d"
-        Title="ALK" Height="140" Width="400" ResizeMode="CanMinimize">
+        Title="ALS" Height="140" Width="400" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="13*"/>

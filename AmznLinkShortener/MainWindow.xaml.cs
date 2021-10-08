@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -13,12 +14,15 @@ namespace AmznLinkShortener
     {
         public MainWindow()
         {
-            InitializeComponent();
-            if (Properties.Settings.Default.activateClipboardMonitor == true)
+            // Allow just a single instance
+            if (!SingleAppInstanceChecker.IsNotRunning())
             {
-                Debug.WriteLine("Activating clipboard monitor");
-                ActivateClipboardMonitor();
+                MessageBox.Show("Application is already running.","AmznLinkShortener");
+                Environment.Exit(1);
+                return;
             }
+            
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -28,7 +32,6 @@ namespace AmznLinkShortener
 
         private void ActivateClipboardMonitor()
         {
-            cbMonitorClipboard.IsChecked = true;
             // Initialize the clipboard now that we have a window source to use
             ClipboardManager windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager.ClipboardChanged += ClipboardChanged;
@@ -36,19 +39,22 @@ namespace AmznLinkShortener
 
         private void ClipboardChanged(object sender, EventArgs e)
         {
-            // Handle your clipboard update here, debug logging example:
-            System.Threading.Thread.Sleep(100);
+            // Try not to interfere with other clipboard handlers
+            Thread.Sleep(20);
+            // Handle clipboard update
             try
             {
-                if (Clipboard.ContainsText() && AmznShorten.IsAmazonLongUrl(Clipboard.GetText()))
+                string clip = Clipboard.GetText();
+                Debug.WriteLine("Received " + clip + " from clipboard");
+                if (Clipboard.ContainsText() && AmznShorten.IsAmazonLongUrl(clip))
                 {
-                    ShortenUrl(Clipboard.GetText());
+                    ShortenUrl(clip);
                 }
             }
             catch(Exception)
             {
-                Debug.WriteLine("Clipboard not accessible, trying again in 100 ms");
-                ClipboardChanged(sender, e);
+                Debug.WriteLine("Clipboard not accessible");
+                // ClipboardChanged(sender, e);
             }
         }
 
@@ -63,16 +69,26 @@ namespace AmznLinkShortener
             {
                 Properties.Settings.Default.activateClipboardMonitor = false;
             }
+            Properties.Settings.Default.Save();
         }
 
         private void ShortenUrl(string url)
         {
             if (AmznShorten.IsAmazonLongUrl(url))
             {
-                string shorturl = AmznShorten.ShortenUrl(txUrl.Text);
+                string shorturl = AmznShorten.ShortenUrl(url);
                 txUrl.Text = shorturl;
                 Debug.WriteLine("Url shortended to " + shorturl);
-                Clipboard.SetText(shorturl);
+                try
+                {
+                    Clipboard.SetText(shorturl);
+                }
+                catch
+                {
+                    Debug.WriteLine("Setting clipboard text failed.");
+                    //Thread.Sleep(50);
+                    //ShortenUrl(url);
+                }
             }
         }
 
@@ -80,15 +96,18 @@ namespace AmznLinkShortener
         {
             // Fixes issue when clicking cut/ copy / paste in context menu
             if (txUrl.SelectionLength == 0)
+            {
                 txUrl.SelectAll();
+            }
         }
 
         private void txUrl_LostMouseCapture(object sender, MouseEventArgs e)
         {
             // If user highlights some text, don't override it
             if (txUrl.SelectionLength == 0)
+            {
                 txUrl.SelectAll();
-
+            }
             // further clicks will not select all
             txUrl.LostMouseCapture -= txUrl_LostMouseCapture;
         }
