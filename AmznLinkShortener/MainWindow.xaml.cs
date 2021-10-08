@@ -23,6 +23,9 @@ namespace AmznLinkShortener
             }
             
             InitializeComponent();
+
+            // Using the name of type as key
+            ((App)Application.Current).WindowPlace.Register(this);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,6 +52,7 @@ namespace AmznLinkShortener
                 if (Clipboard.ContainsText() && AmznShorten.IsAmazonLongUrl(clip))
                 {
                     ShortenUrl(clip);
+                    
                 }
             }
             catch(Exception)
@@ -117,5 +121,6 @@ namespace AmznLinkShortener
             // once we've left the TextBox, return the select all behavior
             txUrl.LostMouseCapture += txUrl_LostMouseCapture;
         }
+
     }
 }

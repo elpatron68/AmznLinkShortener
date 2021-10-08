@@ -34,5 +34,29 @@ namespace AmznLinkShortener.Properties {
                 this["activateClipboardMonitor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public double windowXPos {
+            get {
+                return ((double)(this["windowXPos"]));
+            }
+            set {
+                this["windowXPos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public double windowYPos {
+            get {
+                return ((double)(this["windowYPos"]));
+            }
+            set {
+                this["windowYPos"] = value;
+            }
+        }
     }
 }
