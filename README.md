@@ -10,13 +10,24 @@ extract it and create a shortcut to `AmznLinkShortener.exe` in your start menu o
 
 ## Usage
 
-Start the app, copy a link from an Amazon product page, and paste it to *AmznLinkShortener* and hit `RETURN` or click the button:
+Start the app, copy a link from an Amazon product page, and paste it to *AmznLinkShortener* and hit `RETURN` 
+or click the button:
 
 ![Animated GIF showing usage](usage.gif)
 
-The shortened link will automatically be pasted to the clipboard and will overwrite the former content. Use it by pasting it wherever you like.
+The shortened link will automatically be pasted to the clipboard and will overwrite the former content. 
+Use it by pasting it wherever you like.
 
-If the checkbox *Monitor clipboard* is activated, the app will monitor the clipboard in the background, shorten any Amazon link it finds and paste the shortened link back to the clipboard.
+If the checkbox *Monitor clipboard* is activated, the app will monitor the clipboard in the background, 
+shorten any Amazon link it finds and paste the shortened link back to the clipboard.
+
+## Technical Information
+
+*AmznLinkShortener* searches the clipboard text for two regular expressions. 
+If the clipboard contains `https\:\/\/[a-z]+\.amazon\.[a-z]{2,3}` and a unique product 
+identification string (matching `B[A-Z0-9]{9}`), it will construct the short URL from `https://` plus 
+the host name from the original URL (`amazon.com`, `amazon.uk`, ...) plus `/dp/` plus 
+the product identification from the second *RegEx*.
 
 ## License
 
