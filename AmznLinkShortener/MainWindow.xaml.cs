@@ -24,7 +24,7 @@ namespace AmznLinkShortener
             
             InitializeComponent();
 
-            // Using the name of type as key
+            // Save and restore window position
             ((App)Application.Current).WindowPlace.Register(this);
         }
 
