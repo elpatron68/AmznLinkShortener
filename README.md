@@ -3,6 +3,14 @@
 This Windows app shortens product links from Amazon to a shorter URL ready to be shared with others by 
 any messenger, email or whatever.
 
+## Requirements
+
+This app was made with Microsoft C# for .NET Core 3.1. You may have to download and install the runtime 
+for your operating system: https://dotnet.microsoft.com/download/dotnet/3.1/runtime
+
+It was tested under Microsoft Windows 10 (32 and 64 bit) and Windows 11 (64 bit). 
+It may or may not run under Linux too, if you build the source code under Linux.
+
 ## Installation
 
 Download the zip file from [Releases](https://github.com/elpatron68/AmznLinkShortener/releases/latest), 
