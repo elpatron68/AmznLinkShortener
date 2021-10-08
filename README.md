@@ -3,7 +3,7 @@
 This Windows app shortens product links from Amazon to a shorter URL ready to be shared with others by 
 Twitter, any messenger, email or whatever.
 
-# Installation
+## Installation
 
 Download the zip file from [Releases](https://github.com/elpatron68/AmznLinkShortener/releases/latest), 
 extract it and create a shortcut to `AmznLinkShortener.exe` in your start menu or as desktop icon.
