@@ -3,16 +3,42 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmznLinkShortener"
         mc:Ignorable="d"
-        Title="ALS" Height="140" Width="400" ResizeMode="CanMinimize" SaveWindowPosition="True">
+        Title="ALS" 
+        Height="140" 
+        Width="400" 
+        ResizeMode="CanMinimize" 
+        SaveWindowPosition="True">
+    
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <Button Click="Button_Click_1">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconModern Width="22"
+                                        Height="22"
+                                        VerticalAlignment="Center"
+                                        Kind="Information" />
+                            <TextBlock Margin="4 0 0 0"
+                         VerticalAlignment="Center"
+                         Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="13*"/>
             <ColumnDefinition Width="67*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="txUrl" HorizontalAlignment="Left" Margin="10,10,0,0" Text="Paste Amzn link here" TextWrapping="NoWrap" VerticalAlignment="Top" Width="380" Grid.ColumnSpan="2" GotKeyboardFocus="txUrl_GotKeyboardFocus" LostMouseCapture="txUrl_LostMouseCapture" LostKeyboardFocus="txUrl_LostKeyboardFocus"/>
+        <TextBox x:Name="txUrl" HorizontalAlignment="Left" Margin="10,10,0,0" Text="Paste Amzn product link here" TextWrapping="NoWrap" VerticalAlignment="Top" Width="380" Grid.ColumnSpan="2" GotKeyboardFocus="txUrl_GotKeyboardFocus" LostMouseCapture="txUrl_LostMouseCapture" LostKeyboardFocus="txUrl_LostKeyboardFocus"/>
         <Button x:Name="btnShorten" Content="Shorten and copy to clipboard [RETURN]" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="380" Click="Button_Click" Grid.ColumnSpan="2" IsDefault="True"/>
         <CheckBox x:Name="cbMonitorClipboard" Content="Monitor clipboard (auto-shorten Amzn links)" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Checked="cbMonitorClipboard_Checked" Grid.ColumnSpan="2"/>
     </Grid>

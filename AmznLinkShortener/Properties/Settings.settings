@@ -5,11 +5,5 @@
     <Setting Name="activateClipboardMonitor" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="windowXPos" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">200</Value>
-    </Setting>
-    <Setting Name="windowYPos" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">200</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
