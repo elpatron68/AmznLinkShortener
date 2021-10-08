@@ -23,9 +23,6 @@ namespace AmznLinkShortener
             }
             
             InitializeComponent();
-
-            // Save and restore window position
-            ((App)Application.Current).WindowPlace.Register(this);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
