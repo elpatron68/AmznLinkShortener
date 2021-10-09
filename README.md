@@ -34,7 +34,7 @@ shorten any Amazon link it finds and paste the shortened link back to the clipbo
 Bitly requires the usage of a personal API key to use this service. The binary release of *AmznLinkShortener* 
 uses the author´s personal API key, which results in the fact, that **all URL transformations are listed 
 in the author´s API console**. So it´s highly recommended to create an own Bitly API token, copy the file 
-`Apikey_sample.cs` to_`Apikey.cs`, insert the private there and build the project from source using 
+`Apikey_sample.cs` to_`Apikey.cs`, insert the private token there and build the project from source using 
 *Visual Studio*.
 
 ## Technical Information
