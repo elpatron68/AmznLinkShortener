@@ -26,6 +26,7 @@ namespace AmznLinkShortener
             InitializeComponent();
             lblStatus.Text = "Ready";
             tgBitly.IsOn = Properties.Settings.Default.useBitly;
+            // tgMonitor.IsOn = Properties.Settings.Default.activateClipboardMonitor;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

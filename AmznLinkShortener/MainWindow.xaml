@@ -63,7 +63,8 @@
             Height="50" 
             Margin="10,73,0,0" 
             VerticalAlignment="Top" 
-            Width="100" Toggled="tgMonitor_Toggled">
+            Width="100" Toggled="tgMonitor_Toggled" 
+            ToolTip="Amazon links in clipboard links will automatically be shortened and copied to the clipboard. Just use Crtl-c Crtl-v.">
         </mah:ToggleSwitch>
         <mah:ToggleSwitch 
             x:Name="tgBitly"
@@ -71,7 +72,8 @@
             Height="50" 
             Margin="200,73,0,0" 
             VerticalAlignment="Top" 
-            Width="100" Toggled="tgBitly_Toggled">
+            Width="100" Toggled="tgBitly_Toggled"
+            ToolTip="Links will be shortened using Bitly API. Use with caution, see Readme!">
         </mah:ToggleSwitch>
         <StatusBar 
             Margin="0,144,0,0">
@@ -87,7 +89,8 @@
             Margin="315,10,0,0" 
             VerticalAlignment="Top" 
             Width="35"
-            Style="{DynamicResource MetroCircleButtonStyle}" Height="26" Click="btnCopy_Click">
+            Style="{DynamicResource MetroCircleButtonStyle}" Height="26" Click="btnCopy_Click"
+            ToolTip="Copy shortened link to clipboard">
             <iconPacks:PackIconModern Width="20" Height="20" Kind="PageCopy" />
         </Button>
         <Button 
@@ -96,7 +99,8 @@
             Margin="355,10,0,0" 
             VerticalAlignment="Top" 
             Width="35"
-            Style="{DynamicResource MetroCircleButtonStyle}" Height="26" Click="btnPaste_Click">
+            Style="{DynamicResource MetroCircleButtonStyle}" Height="26" Click="btnPaste_Click"
+            ToolTip="Paste from clipboard">
             <iconPacks:PackIconModern Width="20" Height="20" Kind="ClipboardPaste" />
         </Button>
     </Grid>
