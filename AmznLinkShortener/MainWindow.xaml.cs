@@ -12,6 +12,7 @@ namespace AmznLinkShortener
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private ClipboardManager windowClipboardManager;
         public MainWindow()
         {
             // Allow just a single instance
@@ -35,8 +36,16 @@ namespace AmznLinkShortener
         private void ActivateClipboardMonitor()
         {
             // Initialize the clipboard now that we have a window source to use
-            ClipboardManager windowClipboardManager = new ClipboardManager(this);
+            // ClipboardManager windowClipboardManager = new ClipboardManager(this);
+            windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager.ClipboardChanged += ClipboardChanged;
+        }
+
+        private void DeActivateClipboardMonitor()
+        {
+            // Initialize the clipboard now that we have a window source to use
+            // ClipboardManager windowClipboardManager = new ClipboardManager(this);
+            windowClipboardManager.ClipboardChanged -= ClipboardChanged;
         }
 
         private void ClipboardChanged(object sender, EventArgs e)
@@ -70,6 +79,7 @@ namespace AmznLinkShortener
             }
             else
             {
+                DeActivateClipboardMonitor();
                 Properties.Settings.Default.activateClipboardMonitor = false;
             }
             Properties.Settings.Default.Save();
