@@ -9,7 +9,7 @@ This app was made with C# for Microsoft´s .NET Core 3.1. You may have to downlo
 desktop runtime for your operating system: https://dotnet.microsoft.com/download/dotnet/3.1/runtime
 
 It was tested under Windows 10 (32 and 64 bit) and Windows 11 (64 bit). 
-It may or may not run under Linux too, if you build the source code under Linux.
+It may or may not run under Linux, too, if you build the source code under Linux.
 
 ## Installation
 
