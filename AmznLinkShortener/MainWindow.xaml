@@ -58,9 +58,17 @@
         </Button>
         <CheckBox 
             x:Name="cbMonitorClipboard" 
-            Content="Monitor clipboard (auto-shorten Amzn links)" 
+            Content="Monitor clipboard" 
             HorizontalAlignment="Left" 
             Margin="10,73,0,0" 
+            VerticalAlignment="Top" 
+            Checked="cbMonitorClipboard_Checked" >
+        </CheckBox>
+        <CheckBox 
+            x:Name="cbBitly" 
+            Content="Use Bitly" 
+            HorizontalAlignment="Left" 
+            Margin="160,73,0,0" 
             VerticalAlignment="Top" 
             Checked="cbMonitorClipboard_Checked" >
         </CheckBox>

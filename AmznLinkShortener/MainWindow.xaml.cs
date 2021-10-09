@@ -73,11 +73,12 @@ namespace AmznLinkShortener
             Properties.Settings.Default.Save();
         }
 
-        private void ShortenUrl(string url)
+        private async void ShortenUrl(string url)
         {
             if (AmznShorten.IsAmazonLongUrl(url))
             {
-                string shorturl = AmznShorten.ShortenUrl(url);
+                string shorturl = await AmznShorten.ShortenUrl(url, (bool)!cbBitly.IsChecked);
+
                 txUrl.Text = shorturl;
                 Debug.WriteLine("Url shortended to " + shorturl);
                 try

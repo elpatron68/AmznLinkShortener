@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Apikey_sample.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="amazon_alt.png" />
   </ItemGroup>
 
@@ -22,9 +26,11 @@
     <None Include="..\README.md" Link="README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Apikey_sample.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BitlyAPI" Version="4.0.1" />
     <PackageReference Include="MahApps.Metro" Version="2.4.7" />
     <PackageReference Include="MahApps.Metro.IconPacks.Modern" Version="4.10.0" />
   </ItemGroup>
