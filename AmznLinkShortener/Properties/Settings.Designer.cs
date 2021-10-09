@@ -34,5 +34,17 @@ namespace AmznLinkShortener.Properties {
                 this["activateClipboardMonitor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool useBitly {
+            get {
+                return ((bool)(this["useBitly"]));
+            }
+            set {
+                this["useBitly"] = value;
+            }
+        }
     }
 }

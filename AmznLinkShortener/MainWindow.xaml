@@ -71,7 +71,7 @@
             Height="50" 
             Margin="200,73,0,0" 
             VerticalAlignment="Top" 
-            Width="100">
+            Width="100" Toggled="tgBitly_Toggled">
         </mah:ToggleSwitch>
         <StatusBar 
             Margin="0,144,0,0">

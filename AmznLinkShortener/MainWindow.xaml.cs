@@ -24,6 +24,7 @@ namespace AmznLinkShortener
             
             InitializeComponent();
             lblStatus.Text = "Ready";
+            tgBitly.IsOn = Properties.Settings.Default.useBitly;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -85,6 +86,7 @@ namespace AmznLinkShortener
                 try
                 {
                     Clipboard.SetDataObject(shorturl);
+                    lblStatus.Text = "Shortened link copied to clipboard";
                 }
                 catch
                 {
@@ -135,6 +137,12 @@ namespace AmznLinkShortener
         private void btnPaste_Click(object sender, RoutedEventArgs e)
         {
             txUrl.Text = Clipboard.GetText();
+        }
+
+        private void tgBitly_Toggled(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.useBitly = tgBitly.IsOn;
+            Properties.Settings.Default.Save();
         }
     }
 }
