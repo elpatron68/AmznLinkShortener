@@ -23,6 +23,7 @@ namespace AmznLinkShortener
             }
             
             InitializeComponent();
+            lblStatus.Text = "Ready";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,7 +56,7 @@ namespace AmznLinkShortener
             catch(Exception)
             {
                 Debug.WriteLine("Clipboard not accessible");
-                // ClipboardChanged(sender, e);
+                lblStatus.Text = "Clipboard not accessible";
             }
         }
 
@@ -83,11 +84,12 @@ namespace AmznLinkShortener
                 Debug.WriteLine("Url shortended to " + shorturl);
                 try
                 {
-                    Clipboard.SetText(shorturl);
+                    Clipboard.SetDataObject(shorturl);
                 }
                 catch
                 {
                     Debug.WriteLine("Setting clipboard text failed.");
+                    lblStatus.Text = "Clipboard not accessible";
                     //Thread.Sleep(50);
                     //ShortenUrl(url);
                 }
@@ -123,6 +125,16 @@ namespace AmznLinkShortener
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("AmznLinkShortener\n\nelpatron@mailbox.org\n\nLicense: GPL 3 (see License.txt)\nSourcecode: https://github.com/elpatron68/AmznLinkShortener", "About");
+        }
+
+        private void btnCopy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetDataObject(txUrl.Text);
+        }
+
+        private void btnPaste_Click(object sender, RoutedEventArgs e)
+        {
+            txUrl.Text = Clipboard.GetText();
         }
     }
 }
