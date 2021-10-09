@@ -40,6 +40,7 @@ namespace AmznLinkShortener
             // ClipboardManager windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager.ClipboardChanged += ClipboardChanged;
+            lblStatus.Text = "Clipboard monitor activated";
         }
 
         private void DeActivateClipboardMonitor()
@@ -47,6 +48,7 @@ namespace AmznLinkShortener
             // Initialize the clipboard now that we have a window source to use
             // ClipboardManager windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager.ClipboardChanged -= ClipboardChanged;
+            lblStatus.Text = "Clipboard monitor deactivated";
         }
 
         private void ClipboardChanged(object sender, EventArgs e)
