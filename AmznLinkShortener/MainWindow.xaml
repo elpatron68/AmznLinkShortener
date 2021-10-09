@@ -47,7 +47,7 @@
         </TextBox>
         <Button 
             x:Name="btnShorten" 
-            Content="Shorten and copy to clipboard [RETURN]" 
+            Content="_Shorten and copy to clipboard [RETURN]" 
             HorizontalAlignment="Left" 
             Margin="10,41,0,0" 
             VerticalAlignment="Top" 
@@ -58,7 +58,7 @@
         </Button>
         <CheckBox 
             x:Name="cbMonitorClipboard" 
-            Content="Monitor clipboard" 
+            Content="_Monitor clipboard" 
             HorizontalAlignment="Left" 
             Margin="10,73,0,0" 
             VerticalAlignment="Top" 
@@ -66,7 +66,7 @@
         </CheckBox>
         <CheckBox 
             x:Name="cbBitly" 
-            Content="Use Bitly" 
+            Content="Use _Bitly" 
             HorizontalAlignment="Left" 
             Margin="160,73,0,0" 
             VerticalAlignment="Top" 
