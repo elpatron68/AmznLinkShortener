@@ -7,11 +7,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  mc:Ignorable="d"
         Title="ALS" 
-        Height="140" 
+        Height="180" 
         Width="400" 
         ResizeMode="CanMinimize" 
-        SaveWindowPosition="True">
-    
+        SaveWindowPosition="True"
+        >
+
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
             <Button Click="Button_Click_1">
@@ -56,21 +57,37 @@
             Grid.ColumnSpan="2" 
             IsDefault="True">
         </Button>
-        <CheckBox 
+        <!--<CheckBox 
             x:Name="cbMonitorClipboard" 
             Content="_Monitor clipboard" 
             HorizontalAlignment="Left" 
             Margin="10,73,0,0" 
             VerticalAlignment="Top" 
             Checked="cbMonitorClipboard_Checked" >
-        </CheckBox>
-        <CheckBox 
+        </CheckBox>-->
+        <!--<CheckBox 
             x:Name="cbBitly" 
             Content="Use _Bitly" 
             HorizontalAlignment="Left" 
             Margin="160,73,0,0" 
             VerticalAlignment="Top" 
             Checked="cbMonitorClipboard_Checked" >
-        </CheckBox>
+        </CheckBox>-->
+        <mah:ToggleSwitch 
+            x:Name="tgMonitor"
+            Header="Monitor clipboard" 
+            Height="50" 
+            Margin="10,73,0,0" 
+            VerticalAlignment="Top" 
+            Width="100">
+        </mah:ToggleSwitch>
+        <mah:ToggleSwitch 
+            x:Name="tgBitly"
+            Header="Use Bitly" 
+            Height="50" 
+            Margin="200,73,0,0" 
+            VerticalAlignment="Top" 
+            Width="100">
+        </mah:ToggleSwitch>
     </Grid>
 </mah:MetroWindow>

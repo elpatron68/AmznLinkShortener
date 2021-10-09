@@ -61,7 +61,7 @@ namespace AmznLinkShortener
 
         private void cbMonitorClipboard_Checked(object sender, RoutedEventArgs e)
         {
-            if (cbMonitorClipboard.IsChecked == true)
+            if (tgMonitor.IsOn)
             {
                 ActivateClipboardMonitor();
                 Properties.Settings.Default.activateClipboardMonitor = true;
@@ -77,7 +77,7 @@ namespace AmznLinkShortener
         {
             if (AmznShorten.IsAmazonLongUrl(url))
             {
-                string shorturl = await AmznShorten.ShortenUrl(url, (bool)!cbBitly.IsChecked);
+                string shorturl = await AmznShorten.ShortenUrl(url, tgBitly.IsOn);
 
                 txUrl.Text = shorturl;
                 Debug.WriteLine("Url shortended to " + shorturl);
