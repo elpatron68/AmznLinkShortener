@@ -59,7 +59,7 @@ namespace AmznLinkShortener
             }
         }
 
-        private void cbMonitorClipboard_Checked(object sender, RoutedEventArgs e)
+        private void tgMonitor_Toggled(object sender, RoutedEventArgs e)
         {
             if (tgMonitor.IsOn)
             {
