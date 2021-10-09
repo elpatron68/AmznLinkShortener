@@ -1,4 +1,4 @@
-﻿# AmznLinkShortener
+﻿# Amzn Link Shortener
 
 This Windows app shortens product links from Amazon to a shorter URL ready to be shared with others by 
 any messenger, email or whatever.
@@ -18,7 +18,7 @@ extract it and create a shortcut to `AmznLinkShortener.exe` in your start menu o
 
 ## Usage
 
-Start the app, copy a link from an Amazon product page, paste it to *AmznLinkShortener* and hit `RETURN` 
+Start the app, copy a link from an Amazon product page, paste it to *Amzn Link Shortener* and hit `RETURN` 
 or click the button:
 
 ![Animated GIF showing usage](usage.gif)
@@ -31,7 +31,7 @@ Use it by pasting it wherever you like.
 - If the checkbox *Monitor clipboard* is activated, the app will monitor the clipboard in the background, 
 shorten any Amazon link it finds and paste the shortened link back to the clipboard.
 - If *Use Bitly* is activated, the links created are even shorter, like `https://amzn.to/3AlOcx7`. 
-Bitly requires the usage of a personal API key to use this service. The binary release of *AmznLinkShortener* 
+Bitly requires the usage of a personal API key to use this service. The binary release of *Amzn Link Shortener* 
 uses the author´s personal API key, which results in the fact, that **all URL transformations are listed 
 in the author´s API console**. So it´s highly recommended to create an own Bitly API token, copy the file 
 `Apikey_sample.cs` to_`Apikey.cs`, insert the private token there and build the project from source using 
@@ -39,7 +39,7 @@ in the author´s API console**. So it´s highly recommended to create an own Bit
 
 ## Technical Information
 
-*AmznLinkShortener* searches the clipboard text for two regular expressions. 
+*Amzn Link Shortener* searches the clipboard text for two regular expressions. 
 If the clipboard contains `https\:\/\/[a-z]+\.amazon\.[a-z]{2,3}` and a unique product 
 identification string (matching `B[A-Z0-9]{9}`), it will construct the short URL from `https://` plus 
 the host name from the original URL (`amazon.com`, `amazon.uk`, ...) plus `/dp/` plus 
