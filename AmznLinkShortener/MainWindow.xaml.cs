@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using MahApps.Metro.Controls;
+using System.Collections.Generic;
 
 namespace AmznLinkShortener
 {
@@ -13,6 +14,8 @@ namespace AmznLinkShortener
     public partial class MainWindow : MetroWindow
     {
         private ClipboardManager windowClipboardManager;
+        private Queue<string> statusMessages;
+
         public MainWindow()
         {
             // Allow just a single instance
@@ -24,7 +27,8 @@ namespace AmznLinkShortener
             }
             
             InitializeComponent();
-            lblStatus.Text = "Ready";
+            statusMessages = new Queue<string>();
+            EnqueueStatusMessage("Ready");
             tgBitly.IsOn = Properties.Settings.Default.useBitly;
             // tgMonitor.IsOn = Properties.Settings.Default.activateClipboardMonitor;
         }
@@ -40,7 +44,7 @@ namespace AmznLinkShortener
             // ClipboardManager windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager.ClipboardChanged += ClipboardChanged;
-            lblStatus.Text = "Clipboard monitor activated";
+            EnqueueStatusMessage("Clipboard monitor activated");
         }
 
         private void DeActivateClipboardMonitor()
@@ -48,7 +52,7 @@ namespace AmznLinkShortener
             // Initialize the clipboard now that we have a window source to use
             // ClipboardManager windowClipboardManager = new ClipboardManager(this);
             windowClipboardManager.ClipboardChanged -= ClipboardChanged;
-            lblStatus.Text = "Clipboard monitor deactivated";
+            EnqueueStatusMessage("Clipboard monitor deactivated");
         }
 
         private void ClipboardChanged(object sender, EventArgs e)
@@ -69,7 +73,7 @@ namespace AmznLinkShortener
             catch(Exception)
             {
                 Debug.WriteLine("Clipboard not accessible");
-                lblStatus.Text = "Clipboard not accessible";
+                EnqueueStatusMessage("Clipboard not accessible");
             }
         }
 
@@ -99,14 +103,12 @@ namespace AmznLinkShortener
                 try
                 {
                     Clipboard.SetDataObject(shorturl);
-                    lblStatus.Text = "Shortened link copied to clipboard";
+                    EnqueueStatusMessage("Shortened link copied to clipboard");
                 }
                 catch
                 {
                     Debug.WriteLine("Setting clipboard text failed.");
-                    lblStatus.Text = "Clipboard not accessible";
-                    //Thread.Sleep(50);
-                    //ShortenUrl(url);
+                    EnqueueStatusMessage("Clipboard not accessible");
                 }
             }
         }
@@ -157,5 +159,18 @@ namespace AmznLinkShortener
             Properties.Settings.Default.useBitly = tgBitly.IsOn;
             Properties.Settings.Default.Save();
         }
+        private void EnqueueStatusMessage(string message)
+        {
+            string prefix = DateTime.Now.ToString("HH:mm:ss");
+            statusMessages.Enqueue(prefix + " - " + message);
+            if (statusMessages.Count > 9)
+            {
+                statusMessages.Dequeue();
+            }
+            string messagetext = string.Join("\n", statusMessages);
+            lblStatus.ToolTip= messagetext;
+            lblStatus.Text = message;
+        }
     }
 }
+
