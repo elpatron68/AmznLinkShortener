@@ -86,22 +86,26 @@
         <Button 
             x:Name="btnCopy"
             HorizontalAlignment="Left" 
-            Margin="315,10,0,0" 
+            Margin="315,8,0,0" 
             VerticalAlignment="Top" 
-            Width="35"
-            Style="{DynamicResource MetroCircleButtonStyle}" Height="26" Click="btnCopy_Click"
+            Width="30"
+            Style="{DynamicResource MahApps.Styles.Button.Circle}" 
+            Height="30" 
+            Click="btnCopy_Click"
             ToolTip="Copy shortened link to clipboard">
-            <iconPacks:PackIconModern Width="20" Height="20" Kind="PageCopy" />
+            <iconPacks:PackIconModern Width="16" Height="16" Kind="PageCopy" />
         </Button>
         <Button 
             x:Name="btnPaste"
             HorizontalAlignment="Left" 
-            Margin="355,10,0,0" 
+            Margin="355,8,0,0" 
             VerticalAlignment="Top" 
-            Width="35"
-            Style="{DynamicResource MetroCircleButtonStyle}" Height="26" Click="btnPaste_Click"
+            Width="30"
+            Style="{DynamicResource MahApps.Styles.Button.Circle}"
+            Height="30" 
+            Click="btnPaste_Click"
             ToolTip="Paste from clipboard">
-            <iconPacks:PackIconModern Width="20" Height="20" Kind="ClipboardPaste" />
+            <iconPacks:PackIconModern Width="16" Height="16" Kind="ClipboardPaste" />
         </Button>
     </Grid>
 </mah:MetroWindow>
