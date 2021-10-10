@@ -77,7 +77,7 @@ namespace AmznLinkShortener
             }
         }
 
-        private void tgMonitor_Toggled(object sender, RoutedEventArgs e)
+        private void TgMonitor_Toggled(object sender, RoutedEventArgs e)
         {
             if (tgMonitor.IsOn)
             {
@@ -113,7 +113,8 @@ namespace AmznLinkShortener
             }
         }
 
-        private void txUrl_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        #region Textbox behaviour
+        private void TxUrl_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             // Fixes issue when clicking cut/ copy / paste in context menu
             if (txUrl.SelectionLength == 0)
@@ -122,7 +123,7 @@ namespace AmznLinkShortener
             }
         }
 
-        private void txUrl_LostMouseCapture(object sender, MouseEventArgs e)
+        private void TxUrl_LostMouseCapture(object sender, MouseEventArgs e)
         {
             // If user highlights some text, don't override it
             if (txUrl.SelectionLength == 0)
@@ -130,35 +131,40 @@ namespace AmznLinkShortener
                 txUrl.SelectAll();
             }
             // further clicks will not select all
-            txUrl.LostMouseCapture -= txUrl_LostMouseCapture;
+            txUrl.LostMouseCapture -= TxUrl_LostMouseCapture;
         }
 
-        private void txUrl_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void TxUrl_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             // once we've left the TextBox, return the select all behavior
-            txUrl.LostMouseCapture += txUrl_LostMouseCapture;
+            txUrl.LostMouseCapture += TxUrl_LostMouseCapture;
         }
+        #endregion
 
+        // About dailog
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("AmznLinkShortener\n\nelpatron@mailbox.org\n\nLicense: GPL 3 (see License.txt)\nSourcecode: https://github.com/elpatron68/AmznLinkShortener", "About");
         }
 
-        private void btnCopy_Click(object sender, RoutedEventArgs e)
+        private void BtnCopy_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetDataObject(txUrl.Text);
         }
 
-        private void btnPaste_Click(object sender, RoutedEventArgs e)
+        private void BtnPaste_Click(object sender, RoutedEventArgs e)
         {
             txUrl.Text = Clipboard.GetText();
         }
 
-        private void tgBitly_Toggled(object sender, RoutedEventArgs e)
+        // Save Bitly setting
+        private void TgBitly_Toggled(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.useBitly = tgBitly.IsOn;
             Properties.Settings.Default.Save();
         }
+        
+        // Display message, enqueue last 10 messages and display them as tooltip
         private void EnqueueStatusMessage(string message)
         {
             string prefix = DateTime.Now.ToString("HH:mm:ss");
@@ -173,4 +179,3 @@ namespace AmznLinkShortener
         }
     }
 }
-
