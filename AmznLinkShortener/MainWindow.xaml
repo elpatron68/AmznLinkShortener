@@ -50,7 +50,7 @@
             x:Name="btnShorten" 
             Content="_Shorten and copy to clipboard [RETURN]" 
             HorizontalAlignment="Left" 
-            Margin="10,41,0,0" 
+            Margin="10,48,0,0" 
             VerticalAlignment="Top" 
             Width="380" 
             Click="Button_Click" 
@@ -61,7 +61,7 @@
             x:Name="tgMonitor"
             Header="Monitor clipboard" 
             Height="50" 
-            Margin="10,73,0,0" 
+            Margin="10,82,0,0" 
             VerticalAlignment="Top" 
             Width="100" Toggled="tgMonitor_Toggled" 
             ToolTip="Amazon links in clipboard links will automatically be shortened and copied to the clipboard. Just use Crtl-c Crtl-v.">
@@ -70,7 +70,7 @@
             x:Name="tgBitly"
             Header="Use Bitly" 
             Height="50" 
-            Margin="200,73,0,0" 
+            Margin="200,82,0,0" 
             VerticalAlignment="Top" 
             Width="100" Toggled="tgBitly_Toggled"
             ToolTip="Links will be shortened using Bitly API. Use with caution, see Readme!">
@@ -86,7 +86,7 @@
         <Button 
             x:Name="btnCopy"
             HorizontalAlignment="Left" 
-            Margin="315,8,0,0" 
+            Margin="324,8,0,0" 
             VerticalAlignment="Top" 
             Width="30"
             Style="{DynamicResource MahApps.Styles.Button.Circle}" 
@@ -98,7 +98,7 @@
         <Button 
             x:Name="btnPaste"
             HorizontalAlignment="Left" 
-            Margin="355,8,0,0" 
+            Margin="360,8,0,0" 
             VerticalAlignment="Top" 
             Width="30"
             Style="{DynamicResource MahApps.Styles.Button.Circle}"
