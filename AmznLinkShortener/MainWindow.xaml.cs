@@ -168,7 +168,7 @@ namespace AmznLinkShortener
                 statusMessages.Dequeue();
             }
             string messagetext = string.Join("\n", statusMessages);
-            lblStatus.ToolTip= messagetext;
+            sbStatus.ToolTip= messagetext;
             lblStatus.Text = message;
         }
     }

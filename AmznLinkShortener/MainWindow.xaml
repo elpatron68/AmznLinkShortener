@@ -77,7 +77,7 @@
         </mah:ToggleSwitch>
         <StatusBar 
             Margin="0,144,0,0">
-            <StatusBarItem>
+            <StatusBarItem x:Name="sbStatus">
                 <TextBlock 
                     x:Name="lblStatus">
                 </TextBlock>
