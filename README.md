@@ -37,6 +37,9 @@ Bitly shortening requires the usage of a personal API key to use this service. T
 to create an own free Bitly account, get a personal API token, copy the file `Apikey_sample.cs` 
 to_`Apikey.cs`, insert the private token there and build the project from source using *Visual Studio*.
 
+**If *Use Bitly* is deactivated, no data will be sent to anywhere, all operations are running on your 
+local machine.**
+
 ## Technical Information
 
 *Amzn Link Shortener* searches the clipboard text for two regular expressions. 
