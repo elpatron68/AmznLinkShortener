@@ -31,11 +31,11 @@ Use it by pasting it wherever you like.
 - If the checkbox *Monitor clipboard* is activated, the app will monitor the clipboard in the background, 
 shorten any Amazon link it finds and paste the shortened link back to the clipboard.
 - If *Use Bitly* is activated, the links created are even shorter, like `https://amzn.to/3AlOcx7`. 
-Bitly requires the usage of a personal API key to use this service. The binary release of *Amzn Link Shortener* 
-uses the author´s personal API key, which results in the fact, that **all URL transformations are listed 
-in the author´s API console**. So it´s highly recommended to create an own Bitly API token, copy the file 
-`Apikey_sample.cs` to_`Apikey.cs`, insert the private token there and build the project from source using 
-*Visual Studio*.
+Bitly shortening requires the usage of a personal API key to use this service. The binary release of 
+*Amzn Link Shortener* uses the author´s personal API key, which results in the fact, that 
+**all URL transformations and clicks are listed in the author´s API console**. So it´s highly recommended 
+to create an own free Bitly account, get a personal API token, copy the file `Apikey_sample.cs` 
+to_`Apikey.cs`, insert the private token there and build the project from source using *Visual Studio*.
 
 ## Technical Information
 
