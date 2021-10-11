@@ -16,7 +16,8 @@ Download the zip file for your platform from [Releases](https://github.com/elpat
 extract it and create a shortcut to `AmznLinkShortener.exe` in your start menu or create a desktop icon.
 
 Alternatively, you can download the *Setup* executable programm, which includes both platforms as well as 
-a check for the required .NET Core runtime, which will be downloaded and installed if not detected.
+a check for the required .NET Core runtime, which will be downloaded and installed during the setup process 
+if not detected.
 
 ## Usage
 

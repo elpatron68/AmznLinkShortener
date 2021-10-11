@@ -58,7 +58,7 @@ namespace AmznLinkShortener
         private void ClipboardChanged(object sender, EventArgs e)
         {
             // Try not to interfere with other clipboard handlers
-            Thread.Sleep(20);
+            Thread.Sleep(23);
             // Handle clipboard update
             try
             {
@@ -72,7 +72,6 @@ namespace AmznLinkShortener
             }
             catch(Exception)
             {
-                Debug.WriteLine("Clipboard not accessible");
                 EnqueueStatusMessage("Clipboard not accessible");
             }
         }
@@ -107,7 +106,6 @@ namespace AmznLinkShortener
                 }
                 catch
                 {
-                    Debug.WriteLine("Setting clipboard text failed.");
                     EnqueueStatusMessage("Clipboard not accessible");
                 }
             }
@@ -150,11 +148,13 @@ namespace AmznLinkShortener
         private void BtnCopy_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetDataObject(txUrl.Text);
+            EnqueueStatusMessage("Link copied to clipboard");
         }
 
         private void BtnPaste_Click(object sender, RoutedEventArgs e)
         {
             txUrl.Text = Clipboard.GetText();
+            EnqueueStatusMessage("Link pasted from clipboard");
         }
 
         // Save Bitly setting
@@ -162,11 +162,20 @@ namespace AmznLinkShortener
         {
             Properties.Settings.Default.useBitly = tgBitly.IsOn;
             Properties.Settings.Default.Save();
+            if (tgBitly.IsOn)
+            {
+                EnqueueStatusMessage("Bitly activated");
+            }
+            else
+            {
+                EnqueueStatusMessage("Bitly deactivated");
+            }
         }
         
         // Display message, enqueue last 10 messages and display them as tooltip
         private void EnqueueStatusMessage(string message)
         {
+            Debug.WriteLine(message);
             string prefix = DateTime.Now.ToString("HH:mm:ss");
             statusMessages.Enqueue(prefix + " - " + message);
             if (statusMessages.Count > 9)
