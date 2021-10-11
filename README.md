@@ -12,8 +12,11 @@ It was tested under Windows 10 (32 and 64 bit) and Windows 11 (64 bit).
 
 ## Installation
 
-Download the zip file from [Releases](https://github.com/elpatron68/AmznLinkShortener/releases/latest), 
+Download the zip file for your platform from [Releases](https://github.com/elpatron68/AmznLinkShortener/releases/latest), 
 extract it and create a shortcut to `AmznLinkShortener.exe` in your start menu or create a desktop icon.
+
+Alternatively, you can download the *Setup* executable programm, which includes both platforms as well as 
+a check for the required .NET Core runtime, which will be downloaded and installed if not detected.
 
 ## Usage
 
