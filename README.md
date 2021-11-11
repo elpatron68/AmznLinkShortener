@@ -31,11 +31,12 @@ Use it by pasting it wherever you like.
 
 ### Toggles
 
-- If the toggle  *Amzn Smile* is activated, the app will shorten Amazon links and lead them to Amazon´s Smile program.
-- If *Use Bitly* is activated, the links created are even shorter, like `https://amzn.to/3AlOcx7`. 
+- If the toggle  *Amzn Smile* is activated, the app will shorten Amazon links and lead them to Amazon´s Smile program. Defaults to *Off*.
+- If *Use Bitly* is activated, the links created are even shorter, like `https://amzn.to/3AlOcx7`. Defaults to *Off*.
+
 Bitly shortening requires the usage of a personal API key to use this service. The binary release of 
 *Amzn Link Shortener* uses the author´s personal API key, which results in the fact, that 
-**all URL transformations and clicks are listed in the author´s API console**. So it´s highly recommended 
+**all URL transformations and clicks are listed in the author´s API console**. So it´s **highly recommended** 
 to create an own free Bitly account, get a personal API token, copy the file `Apikey_sample.cs` 
 to_`Apikey.cs`, insert the private token there and build the project from source using *Visual Studio*.
 
