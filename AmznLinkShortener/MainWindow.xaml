@@ -53,18 +53,19 @@
             Margin="10,48,0,0" 
             VerticalAlignment="Top" 
             Width="380" 
-            Click="Button_Click" 
+            Click="Button_ClickAsync" 
             Grid.ColumnSpan="2" 
             IsDefault="True">
         </Button>
         <mah:ToggleSwitch 
-            x:Name="tgMonitor"
-            Header="Monitor clipboard" 
+            x:Name="tgSmile"
+            Header="Amzn Smile" 
             Height="50" 
             Margin="10,82,0,0" 
             VerticalAlignment="Top" 
-            Width="100" Toggled="TgMonitor_Toggled" 
-            ToolTip="Amazon links in clipboard links will automatically be shortened and copied to the clipboard. Just use Crtl-c Crtl-v.">
+            Width="100" 
+            Toggled="TgSmile_Toggled" 
+            ToolTip="Add Amazon Smile to shortened links or remove Smile from link">
         </mah:ToggleSwitch>
         <mah:ToggleSwitch 
             x:Name="tgBitly"

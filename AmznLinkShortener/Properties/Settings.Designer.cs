@@ -46,5 +46,17 @@ namespace AmznLinkShortener.Properties {
                 this["useBitly"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool useSmile {
+            get {
+                return ((bool)(this["useSmile"]));
+            }
+            set {
+                this["useSmile"] = value;
+            }
+        }
     }
 }

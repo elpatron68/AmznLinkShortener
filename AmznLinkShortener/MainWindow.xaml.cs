@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using MahApps.Metro.Controls;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AmznLinkShortener
 {
@@ -13,8 +14,7 @@ namespace AmznLinkShortener
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private ClipboardManager windowClipboardManager;
-        private Queue<string> statusMessages;
+        private readonly Queue<string> statusMessages;
 
         public MainWindow()
         {
@@ -30,35 +30,31 @@ namespace AmznLinkShortener
             statusMessages = new Queue<string>();
             EnqueueStatusMessage("Ready");
             tgBitly.IsOn = Properties.Settings.Default.useBitly;
-            // tgMonitor.IsOn = Properties.Settings.Default.activateClipboardMonitor;
+            tgSmile.IsOn = Properties.Settings.Default.useSmile;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_ClickAsync(object sender, RoutedEventArgs e)
         {
-            ShortenUrl(txUrl.Text);
-        }
-
-        private void ActivateClipboardMonitor()
-        {
-            // Initialize the clipboard now that we have a window source to use
-            // ClipboardManager windowClipboardManager = new ClipboardManager(this);
-            windowClipboardManager = new ClipboardManager(this);
-            windowClipboardManager.ClipboardChanged += ClipboardChanged;
-            EnqueueStatusMessage("Clipboard monitor activated");
-        }
-
-        private void DeActivateClipboardMonitor()
-        {
-            // Initialize the clipboard now that we have a window source to use
-            // ClipboardManager windowClipboardManager = new ClipboardManager(this);
-            windowClipboardManager.ClipboardChanged -= ClipboardChanged;
-            EnqueueStatusMessage("Clipboard monitor deactivated");
+            string su = await ShortenUrl(txUrl.Text);
+            if (su != "")
+            {
+                
+                try
+                {
+                    Clipboard.SetText(su);
+                    EnqueueStatusMessage("Shortened link copied to clipboard");
+                }
+                catch
+                {
+                    EnqueueStatusMessage("Clipboard not accessible");
+                }
+            }
         }
 
         private void ClipboardChanged(object sender, EventArgs e)
         {
             // Try not to interfere with other clipboard handlers
-            Thread.Sleep(23);
+            Thread.Sleep(59);
             // Handle clipboard update
             try
             {
@@ -66,8 +62,11 @@ namespace AmznLinkShortener
                 Debug.WriteLine("Received " + clip + " from clipboard");
                 if (Clipboard.ContainsText() && AmznShorten.IsAmazonLongUrl(clip))
                 {
-                    ShortenUrl(clip);
-                    
+                    _ = ShortenUrl(clip);
+                }
+                else if (!AmznShorten.IsAmazonLongUrl(clip))
+                {
+                    EnqueueStatusMessage("No Amazon product link found");
                 }
             }
             catch(Exception)
@@ -76,38 +75,20 @@ namespace AmznLinkShortener
             }
         }
 
-        private void TgMonitor_Toggled(object sender, RoutedEventArgs e)
-        {
-            if (tgMonitor.IsOn)
-            {
-                ActivateClipboardMonitor();
-                Properties.Settings.Default.activateClipboardMonitor = true;
-            }
-            else
-            {
-                DeActivateClipboardMonitor();
-                Properties.Settings.Default.activateClipboardMonitor = false;
-            }
-            Properties.Settings.Default.Save();
-        }
-
-        private async void ShortenUrl(string url)
+        private async Task<string> ShortenUrl(string url)
         {
             if (AmznShorten.IsAmazonLongUrl(url))
             {
-                string shorturl = await AmznShorten.ShortenUrl(url, tgBitly.IsOn);
+                string shorturl = await AmznShorten.ShortenUrl(url, tgBitly.IsOn, tgSmile.IsOn);
 
                 txUrl.Text = shorturl;
                 Debug.WriteLine("Url shortended to " + shorturl);
-                try
-                {
-                    Clipboard.SetDataObject(shorturl);
-                    EnqueueStatusMessage("Shortened link copied to clipboard");
-                }
-                catch
-                {
-                    EnqueueStatusMessage("Clipboard not accessible");
-                }
+                return shorturl;
+            }
+            else
+            {
+                EnqueueStatusMessage("No Amazon link detected in clipboad data");
+                return "";
             }
         }
 
@@ -171,7 +152,22 @@ namespace AmznLinkShortener
                 EnqueueStatusMessage("Bitly deactivated");
             }
         }
-        
+
+        // Save Amazon Smile setting
+        private void TgSmile_Toggled(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.useSmile = tgSmile.IsOn;
+            Properties.Settings.Default.Save();
+            if (tgSmile.IsOn)
+            {
+                EnqueueStatusMessage("Amzn Smile activated");
+            }
+            else
+            {
+                EnqueueStatusMessage("Amzn Smile deactivated");
+            }
+        }
+
         // Display message, enqueue last 10 messages and display them as tooltip
         private void EnqueueStatusMessage(string message)
         {

@@ -9,6 +9,12 @@
     <FileVersion>1.0.2.0</FileVersion>
     <Version>1.0.2</Version>
     <Platforms>AnyCPU;x86;x64</Platforms>
+    <RepositoryUrl>https://github.com/elpatron68/AmznLinkShortener</RepositoryUrl>
+    <Authors>Markus Busche</Authors>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/elpatron68/AmznLinkShortener</PackageProjectUrl>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>5ad71538faddc59f7919cbda63f55acf.cer</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +23,10 @@
 
   <ItemGroup>
     <None Remove="amazon_alt.png" />
+    <None Include="..\License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
