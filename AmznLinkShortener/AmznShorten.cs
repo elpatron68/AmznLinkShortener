@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -51,9 +50,9 @@ namespace AmznLinkShortener
                     url = "https://smile." + string.Join(".", url.Split('.').Skip(1));
                 }
             }
-            else if (url.ToLower().Contains("smile."))
+            else if (url.ToLower().StartsWith("https://smile."))
             {
-                url = url.Replace("smile.", "");
+                url = url.Replace("https://smile.", "https://");
             }
             return url;
         }
