@@ -31,8 +31,7 @@ Use it by pasting it wherever you like.
 
 ### Toggles
 
-- If the checkbox *Monitor clipboard* is activated, the app will monitor the clipboard in the background, 
-shorten any Amazon link it finds and paste the shortened link back to the clipboard.
+- If the toggle  *Amzn Smile* is activated, the app will shorten Amazon links and lead them to Amazon´s Smile program.
 - If *Use Bitly* is activated, the links created are even shorter, like `https://amzn.to/3AlOcx7`. 
 Bitly shortening requires the usage of a personal API key to use this service. The binary release of 
 *Amzn Link Shortener* uses the author´s personal API key, which results in the fact, that 
