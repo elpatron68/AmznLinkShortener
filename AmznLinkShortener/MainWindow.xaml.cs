@@ -123,7 +123,8 @@ namespace AmznLinkShortener
         // About dailog
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("AmznLinkShortener\n\nelpatron@mailbox.org\n\nLicense: GPL 3 (see License.txt)\nSourcecode: https://github.com/elpatron68/AmznLinkShortener", "About");
+            string aVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            MessageBox.Show("AmznLinkShortener v" + aVersion + "\n\nelpatron@mailbox.org\n\nLicense: GPL 3 (see License.txt)\nSourcecode: https://github.com/elpatron68/AmznLinkShortener", "About");
         }
 
         private void BtnCopy_Click(object sender, RoutedEventArgs e)
