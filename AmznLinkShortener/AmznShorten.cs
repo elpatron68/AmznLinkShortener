@@ -31,7 +31,7 @@ namespace AmznLinkShortener
             if (!useBitly)
             {
                 Debug.WriteLine("Using regex shortening");
-                string pattern1 = @"https:\/\/[a-z]*amazon\.[a-z]{2,3}";
+                string pattern1 = @"https:\/\/[a-z]{2,3}\.amazon\.[a-z]{2,3}";
                 string pattern2 = @"B[A-Z0-9]{9}";
                 try
                 {
