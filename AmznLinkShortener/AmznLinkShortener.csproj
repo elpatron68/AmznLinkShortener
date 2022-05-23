@@ -5,9 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>amazon_alt.ico</ApplicationIcon>
-    <AssemblyVersion>1.0.3.3</AssemblyVersion>
-    <FileVersion>1.0.3.3</FileVersion>
-    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.4.1</AssemblyVersion>
+    <FileVersion>1.0.4.1</FileVersion>
+    <Version>1.0.4</Version>
     <Platforms>AnyCPU;x86;x64</Platforms>
     <RepositoryUrl>https://github.com/elpatron68/AmznLinkShortener</RepositoryUrl>
     <Authors>Markus Busche</Authors>
@@ -15,6 +15,7 @@
     <PackageProjectUrl>https://github.com/elpatron68/AmznLinkShortener</PackageProjectUrl>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>5ad71538faddc59f7919cbda63f55acf.cer</AssemblyOriginatorKeyFile>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>

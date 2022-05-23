@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Amzn Link Shortener"
-#define MyAppVersion "1.0.3.3"
+#define MyAppVersion "1.0.4.1"
 #define MyAppPublisher "Markus Busche"
 #define MyAppURL "https://github.com/elpatron68/AmznLinkShortener"
 #define MyAppExeName "AmznLinkShortener.exe"
